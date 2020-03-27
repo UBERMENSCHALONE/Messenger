@@ -54,6 +54,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     //UI
     ImageView imageViewProfileImage;
     TextView textViewSetProfileImage;
+    EditText editTextUsername;
     EditText editTextName;
     EditText editTextLastname;
     EditText editTextEmail;
@@ -81,6 +82,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
         imageViewProfileImage = rootView.findViewById(R.id.imageViewProfileImage);
         textViewSetProfileImage = rootView.findViewById(R.id.textViewSetProfileImage);
+        editTextUsername = rootView.findViewById(R.id.editTextUsername);
         editTextName = rootView.findViewById(R.id.editTextName);
         editTextLastname = rootView.findViewById(R.id.editTextLastname);
         editTextEmail = rootView.findViewById(R.id.editTextEmail);
@@ -112,23 +114,27 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     }
 
     public void checkField() {
-        if ((editTextName.getText().length() != 0)) {
-            if ((editTextLastname.getText().length() != 0)) {
-                if ((editTextEmail.getText().length() != 0)) {
-                    if ((editTextPassword.getText().length() != 0)) {
-                        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-                        onCreateAcc(String.valueOf(editTextEmail.getText()), String.valueOf(editTextPassword.getText()));
+        if ((editTextUsername.getText().length() != 0)) {
+            if ((editTextName.getText().length() != 0)) {
+                if ((editTextLastname.getText().length() != 0)) {
+                    if ((editTextEmail.getText().length() != 0)) {
+                        if ((editTextPassword.getText().length() != 0)) {
+                            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                            onCreateAcc(String.valueOf(editTextEmail.getText()), String.valueOf(editTextPassword.getText()));
+                        } else {
+                            Toast.makeText(getContext(), "Ошибка: заполните поле \"Пароль\"", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(getContext(), "Ошибка: заполните поле \"Пароль\"", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Ошибка: заполните поле \"Email\"", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Ошибка: заполните поле \"Email\"", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Ошибка: заполните поле \"Lastname\"", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(getContext(), "Ошибка: заполните поле \"Lastname\"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Ошибка: заполните поле \"Name\"", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(getContext(), "Ошибка: заполните поле \"Name\"", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Ошибка: заполните поле \"Username\"", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -144,9 +150,9 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
                     SharedPreferences.Editor editor = sharedPreferencesID.edit();
                     editor.putString("UserID", AuthenticationID).apply();
 
-                    if(imagePick){
+                    if (imagePick) {
                         uploadImage();
-                    }else{
+                    } else {
                         Login();
                     }
 
@@ -161,6 +167,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
         User user = new User();
         user.userID = AuthenticationID;
         user.userProfileImageURL = imageProfileRef;
+        user.userUsername = String.valueOf(editTextUsername.getText()).toLowerCase();
         user.userEmail = String.valueOf(editTextEmail.getText());
         user.userName = String.valueOf(editTextName.getText());
         user.userLastname = String.valueOf(editTextLastname.getText());
@@ -227,7 +234,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
         }
     }
 
-    public void Login(){
+    public void Login() {
         writeNewUser();
         Intent intent = new Intent(getActivity(), TabbedActivity.class);
         startActivity(intent);

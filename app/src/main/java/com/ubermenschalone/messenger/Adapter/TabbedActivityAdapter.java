@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.ubermenschalone.messenger.Fragment.LoginFragment;
 import com.ubermenschalone.messenger.Fragment.ProfileFragment;
+import com.ubermenschalone.messenger.Fragment.UsersListFragment;
 import com.ubermenschalone.messenger.R;
 
 
@@ -30,7 +31,7 @@ public class TabbedActivityAdapter extends FragmentPagerAdapter {
             case 0:
                 return ProfileFragment.newInstance();
             case 1:
-                return ProfileFragment.newInstance();
+                return UsersListFragment.newInstance();
             case 2:
                 return ProfileFragment.newInstance();
             default:

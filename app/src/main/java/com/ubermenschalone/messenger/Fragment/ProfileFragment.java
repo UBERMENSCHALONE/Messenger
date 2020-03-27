@@ -55,6 +55,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     ImageView imageViewProfileImage;
     TextView textViewSetProfileImage;
+    TextView textViewUsername;
     TextView textViewEmail;
     TextView textViewName;
     TextView textViewLastname;
@@ -77,6 +78,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         imageViewProfileImage = rootView.findViewById(R.id.imageViewProfileImage);
         textViewSetProfileImage = rootView.findViewById(R.id.textViewSetProfileImage);
+        textViewUsername = rootView.findViewById(R.id.textViewUsername);
         textViewEmail = rootView.findViewById(R.id.textViewEmail);
         textViewName = rootView.findViewById(R.id.textViewName);
         textViewLastname = rootView.findViewById(R.id.textViewLastname);
@@ -103,6 +105,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User value = dataSnapshot.getValue(User.class);
                 Picasso.get().load(value.userProfileImageURL).resize(300, 300).centerCrop().into(imageViewProfileImage);
+                textViewUsername.setText(value.userUsername);
                 textViewEmail.setText(value.userEmail);
                 textViewName.setText(value.userName);
                 textViewLastname.setText(value.userLastname);
