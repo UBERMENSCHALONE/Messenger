@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.ubermenschalone.messenger.Fragment.LoginFragment;
+import com.ubermenschalone.messenger.Fragment.ProfileFragment;
 import com.ubermenschalone.messenger.R;
 
 
@@ -27,11 +28,11 @@ public class TabbedActivityAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position){
             case 0:
-                return LoginFragment.newInstance();
+                return ProfileFragment.newInstance();
             case 1:
-                return LoginFragment.newInstance();
+                return ProfileFragment.newInstance();
             case 2:
-                return LoginFragment.newInstance();
+                return ProfileFragment.newInstance();
             default:
                 return null;
         }
