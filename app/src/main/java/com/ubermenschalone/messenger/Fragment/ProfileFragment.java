@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,7 +38,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 import com.ubermenschalone.messenger.Activity.AuthenticationActivity;
 import com.ubermenschalone.messenger.Interface.SwitchFragment;
 import com.ubermenschalone.messenger.Model.User;
@@ -104,7 +104,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User value = dataSnapshot.getValue(User.class);
-                Picasso.get().load(value.userProfileImageURL).resize(300, 300).centerCrop().into(imageViewProfileImage);
+                Glide.with(getContext()).load(value.userProfileImageURL).override(512, 512).into(imageViewProfileImage);
                 textViewUsername.setText(value.userUsername);
                 textViewEmail.setText(value.userEmail);
                 textViewName.setText(value.userName);

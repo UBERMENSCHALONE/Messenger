@@ -3,6 +3,7 @@ package com.ubermenschalone.messenger.Model;
 public class User {
     public String userID;
     public String userUsername;
+    public String userUsernameSearch;
     public String userProfileImageURL;
     public String userName;
     public String userLastname;
@@ -12,9 +13,10 @@ public class User {
     public User() {
     }
 
-    public User(String userID, String userUsername, String userProfileImageURL,  String userName, String userLastname, String userEmail, String userPassword) {
+    public User(String userID, String userUsername, String userUsernameSearch,  String userProfileImageURL,  String userName, String userLastname, String userEmail, String userPassword) {
         this.userID = userID;
         this.userUsername = userUsername;
+        this.userUsernameSearch = userUsernameSearch;
         this.userProfileImageURL = userProfileImageURL;
         this.userName = userName;
         this.userLastname = userLastname;
@@ -36,6 +38,14 @@ public class User {
 
     public void setUserUsername(String userUsername) {
         this.userUsername = userUsername;
+    }
+
+    public String getUserUsernameSearch() {
+        return userUsernameSearch;
+    }
+
+    public void setUserUsernameSearch(String userUsernameSearch) {
+        this.userUsernameSearch = userUsernameSearch;
     }
 
     public String getUserProfileImageURL() {

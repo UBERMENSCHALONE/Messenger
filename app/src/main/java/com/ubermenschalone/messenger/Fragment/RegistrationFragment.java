@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -66,7 +67,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     DatabaseReference myRef;
     FirebaseStorage storage;
     StorageReference storageReference;
-    String AuthenticationID;
+    String authenticationID;
 
     //Add Image
     private static final int IMAGE_REQUEST = 1;
@@ -144,11 +145,11 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     com.google.firebase.auth.FirebaseUser user = mAuth.getCurrentUser();
-                    AuthenticationID = user.getUid();
+                    authenticationID = user.getUid();
 
                     SharedPreferences sharedPreferencesID = getActivity().getSharedPreferences("UserID", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferencesID.edit();
-                    editor.putString("UserID", AuthenticationID).apply();
+                    editor.putString("UserID", authenticationID).apply();
 
                     if (imagePick) {
                         uploadImage();
@@ -165,14 +166,15 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
     private void writeNewUser() {
         User user = new User();
-        user.userID = AuthenticationID;
+        user.userID = authenticationID;
         user.userProfileImageURL = imageProfileRef;
-        user.userUsername = String.valueOf(editTextUsername.getText()).toLowerCase();
+        user.userUsername = String.valueOf(editTextUsername.getText());
+        user.userUsernameSearch = String.valueOf(editTextUsername.getText()).toLowerCase();
         user.userEmail = String.valueOf(editTextEmail.getText());
         user.userName = String.valueOf(editTextName.getText());
         user.userLastname = String.valueOf(editTextLastname.getText());
         user.userPassword = String.valueOf(editTextPassword.getText());
-        myRef.child("Users/" + AuthenticationID).setValue(user);
+        myRef.child("Users/" + authenticationID).setValue(user);
     }
 
     private void SelectImage() {
@@ -249,7 +251,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
-                imageViewProfileImage.setImageBitmap(bitmap);
+                Glide.with(getContext()).load(bitmap).override(512, 512).into(imageViewProfileImage);
             } catch (IOException e) {
                 e.printStackTrace();
             }

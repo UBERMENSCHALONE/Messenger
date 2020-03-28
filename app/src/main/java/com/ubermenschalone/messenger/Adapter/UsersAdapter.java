@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
+import com.ubermenschalone.messenger.Activity.ChatActivity;
 import com.ubermenschalone.messenger.Model.User;
 import com.ubermenschalone.messenger.R;
 
@@ -52,7 +53,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
         if (user.getUserProfileImageURL().equals("STANDARD")){
             holder.imageViewProfileImage.setImageResource(R.mipmap.ic_launcher);
         } else {
-            Picasso.get().load(user.userProfileImageURL).resize(100, 100).centerCrop().into(holder.imageViewProfileImage);
+            Glide.with(mContext).load(user.userProfileImageURL).override(256, 256).into(holder.imageViewProfileImage);
         }
 
         holder.textViewName.setText(user.getUserUsername());
@@ -60,9 +61,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(mContext, MessageActivity.class);
-//                intent.putExtra("userid", user.getId());
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, ChatActivity.class);
+                intent.putExtra("userID", user.getUserID());
+                mContext.startActivity(intent);
             }
         });
     }

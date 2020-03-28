@@ -85,7 +85,7 @@ public class UsersListFragment extends Fragment implements View.OnClickListener 
     private void searchUsers(String username) {
 
         final FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
-        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("userUsername").startAt(username).endAt(username+"\uf8ff");
+        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("userUsernameSearch").startAt(username).endAt(username+"\uf8ff");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
