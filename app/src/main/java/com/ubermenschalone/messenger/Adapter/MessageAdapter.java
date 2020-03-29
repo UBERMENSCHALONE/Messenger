@@ -38,10 +38,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == MSG_TYPE_RIGHT) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_right, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_message_right, parent, false);
             return new MessageAdapter.ViewHolder(view);
         } else {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_left, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_message_left, parent, false);
             return new MessageAdapter.ViewHolder(view);
         }
     }
@@ -52,6 +52,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         Message chat = mMessage.get(position);
 
         holder.show_message.setText(chat.getMessage());
+        holder.textViewTime.setText(chat.getTime());
 
         if (imageurl.equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
@@ -81,12 +82,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         public TextView show_message;
         public ImageView profile_image;
         public TextView txt_seen;
+        public TextView textViewTime;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             show_message = itemView.findViewById(R.id.show_message);
             profile_image = itemView.findViewById(R.id.profile_image);
+            textViewTime = itemView.findViewById(R.id.textViewTime);
             txt_seen = itemView.findViewById(R.id.txt_seen);
         }
     }

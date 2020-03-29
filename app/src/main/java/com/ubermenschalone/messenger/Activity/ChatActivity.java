@@ -29,7 +29,10 @@ import com.ubermenschalone.messenger.Service.NotificationService;
 import com.ubermenschalone.messenger.Notification.Sender;
 import com.ubermenschalone.messenger.Notification.Token;
 import com.ubermenschalone.messenger.R;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;
@@ -143,6 +146,11 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         hashMap.put("sender", sender);
         hashMap.put("receiver", receiver);
         hashMap.put("message", message);
+
+
+        android.text.format.DateFormat df = new android.text.format.DateFormat();
+
+        hashMap.put("time", df.format("hh:mm", new java.util.Date()));
         hashMap.put("isseen", false);
 
         reference.child("Chats").push().setValue(hashMap);

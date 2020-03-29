@@ -32,6 +32,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
     private List<User> mUsers;
     private boolean ischat;
     String lastMessage;
+    String lastMessageTime;
 
     public UsersAdapter(Context mContext, List<User> mUsers, boolean ischat){
         this.mUsers = mUsers;
@@ -60,7 +61,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
 
 
         if (ischat){
-            lastMessage(user.getUserID(), holder.textViewLastMessage);
+            lastMessage(user.getUserID(), holder.textViewLastMessage, holder.textViewTime);
             holder.textViewLastMessage.setVisibility(View.VISIBLE);
         } else {
             holder.textViewLastMessage.setVisibility(View.GONE);
@@ -98,6 +99,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
 
         public TextView textViewName;
         public TextView textViewLastMessage;
+        public TextView textViewTime;
         public ImageView imageViewProfileImage;
         public ImageView imageViewStatus;
 
@@ -107,11 +109,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
             imageViewStatus = itemView.findViewById(R.id.imageViewStatus);
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewLastMessage = itemView.findViewById(R.id.textViewLastMessage);
+            textViewTime = itemView.findViewById(R.id.textViewTime);
         }
     }
 
-    private void lastMessage(final String userid, final TextView last_msg){
+    private void lastMessage(final String userid, final TextView last_msg, final TextView textViewTime){
         lastMessage = "default";
+        lastMessageTime = "default";
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
 
@@ -124,6 +128,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
                         if (message.getReceiver().equals(firebaseUser.getUid()) && message.getSender().equals(userid) ||
                                 message.getReceiver().equals(userid) && message.getSender().equals(firebaseUser.getUid())) {
                             lastMessage = message.getMessage();
+                            lastMessageTime = message.getTime();
                         }
                     }
                 }
@@ -131,14 +136,17 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
                 switch (lastMessage){
                     case  "default":
                         last_msg.setText("No Message");
+                        textViewTime.setText("");
                         break;
 
                     default:
                         last_msg.setText(lastMessage);
+                        textViewTime.setText(lastMessageTime);
                         break;
                 }
 
                 lastMessage = "default";
+                lastMessageTime = "default";
             }
 
             @Override

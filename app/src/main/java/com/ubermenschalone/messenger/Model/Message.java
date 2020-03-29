@@ -7,13 +7,15 @@ public class Message {
     private String sender;
     private String receiver;
     private String message;
+    private String time;
     private boolean isseen;
 
-    public Message(String sender, String receiver, String message, boolean isseen) {
+    public Message(String sender, String receiver, String message, boolean issee, String time) {
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
         this.isseen = isseen;
+        this.time = time;
     }
 
     public Message() {
@@ -41,6 +43,14 @@ public class Message {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public boolean isIsseen() {
