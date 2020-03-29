@@ -174,6 +174,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
         user.userName = String.valueOf(editTextName.getText());
         user.userLastname = String.valueOf(editTextLastname.getText());
         user.userPassword = String.valueOf(editTextPassword.getText());
+        user.userStatus = "offline";
         myRef.child("Users/" + authenticationID).setValue(user);
     }
 

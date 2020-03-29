@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,11 +29,9 @@ import com.ubermenschalone.messenger.Service.NotificationService;
 import com.ubermenschalone.messenger.Notification.Sender;
 import com.ubermenschalone.messenger.Notification.Token;
 import com.ubermenschalone.messenger.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,6 +39,7 @@ import retrofit2.Response;
 public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView imageViewBack;
+    ImageView imageViewStatus;
     TextView textViewName;
     RecyclerView recyclerView;
     EditText editTextSendText;
@@ -58,6 +55,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     boolean notify = false;
 
     DatabaseReference databaseReference;
+    DatabaseReference databaseReferenceStatus;
 
     List<Message> listMessage;
     MessageAdapter messageAdapter;
@@ -68,6 +66,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_chat);
 
         imageViewBack = findViewById(R.id.imageViewBack);
+        imageViewStatus = findViewById(R.id.imageViewStatus);
         textViewName = findViewById(R.id.textViewName);
         recyclerView = findViewById(R.id.recyclerView);
         editTextSendText = findViewById(R.id.editTextSendText);
@@ -78,10 +77,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
         intent = getIntent();
         userID = intent.getStringExtra("userID");
-        textViewName.setText(userID);
+
+
 
        notificationService = Client.getClient("https://fcm.googleapis.com/").create(NotificationService.class);
-
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -90,6 +89,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        setStatus("online");
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userID);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -97,6 +98,14 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 textViewName.setText(user.getUserName() + " " + user.getUserLastname());
+
+                if(user.getUserStatus().equals("online")){
+                    imageViewStatus.setVisibility(View.VISIBLE);
+                }else{
+                    imageViewStatus.setVisibility(View.GONE);
+                }
+
+
                 readMesagges(firebaseUser.getUid(), userID, user.getUserProfileImageURL());
             }
 
@@ -139,10 +148,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         reference.child("Chats").push().setValue(hashMap);
 
 
-        // add user to chat fragment
-        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
-                .child(firebaseUser.getUid())
-                .child(userID);
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist").child(firebaseUser.getUid()).child(userID);
 
         chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -197,7 +203,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                             message.getReceiver().equals(userid) && message.getSender().equals(myid)){
                         listMessage.add(message);
                     }
-
                     messageAdapter = new MessageAdapter(ChatActivity.this, listMessage, imageurl);
                     recyclerView.setAdapter(messageAdapter);
                 }
@@ -235,7 +240,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
                                 @Override
                                 public void onFailure(Call<MyResponse> call, Throwable t) {
-
                                 }
                             });
                 }
@@ -247,4 +251,35 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
+    private void setStatus(String status){
+        databaseReferenceStatus = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userStatus", status);
+        databaseReferenceStatus.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setStatus("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setStatus("offline");
+    }
+
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        setStatus("offline");
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        setStatus("offline");
+//    }
 }

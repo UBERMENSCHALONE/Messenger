@@ -9,11 +9,12 @@ public class User {
     public String userLastname;
     public String userEmail;
     public String userPassword;
+    public String userStatus;
 
     public User() {
     }
 
-    public User(String userID, String userUsername, String userUsernameSearch,  String userProfileImageURL,  String userName, String userLastname, String userEmail, String userPassword) {
+    public User(String userID, String userUsername, String userUsernameSearch,  String userProfileImageURL,  String userName, String userLastname, String userEmail, String userPassword, String userStatus) {
         this.userID = userID;
         this.userUsername = userUsername;
         this.userUsernameSearch = userUsernameSearch;
@@ -22,6 +23,7 @@ public class User {
         this.userLastname = userLastname;
         this.userID = userEmail;
         this.userID = userPassword;
+        this.userStatus = userStatus;
     }
 
     public String getUserID() {
@@ -86,5 +88,13 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 }

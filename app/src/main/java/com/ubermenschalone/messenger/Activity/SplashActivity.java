@@ -2,11 +2,8 @@ package com.ubermenschalone.messenger.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashActivity extends AppCompatActivity {

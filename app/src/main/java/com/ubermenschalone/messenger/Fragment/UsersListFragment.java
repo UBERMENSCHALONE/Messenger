@@ -100,7 +100,7 @@ public class UsersListFragment extends Fragment implements View.OnClickListener 
                         mUsers.add(user);
                     }
                 }
-                userAdapter = new UsersAdapter(getContext(), mUsers);
+                userAdapter = new UsersAdapter(getContext(), mUsers, false);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -131,7 +131,7 @@ public class UsersListFragment extends Fragment implements View.OnClickListener 
 
                     }
 
-                    userAdapter = new UsersAdapter(getContext(), mUsers);
+                    userAdapter = new UsersAdapter(getContext(), mUsers, false);
                     recyclerView.setAdapter(userAdapter);
                 }
             }

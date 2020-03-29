@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.ubermenschalone.messenger.Fragment.LoginFragment;
+import com.ubermenschalone.messenger.Fragment.ChatsFragment;
 import com.ubermenschalone.messenger.Fragment.ProfileFragment;
 import com.ubermenschalone.messenger.Fragment.UsersListFragment;
 import com.ubermenschalone.messenger.R;
@@ -29,7 +29,7 @@ public class TabbedActivityAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position){
             case 0:
-                return ProfileFragment.newInstance();
+                return ChatsFragment.newInstance();
             case 1:
                 return UsersListFragment.newInstance();
             case 2:
@@ -47,7 +47,6 @@ public class TabbedActivityAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return 3;
     }
 }
