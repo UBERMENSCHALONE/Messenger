@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:src="@mipmap/ic_launcher"
         android:visibility="gone"
-        app:civ_border_color="#05df29"
+        app:civ_border_color="#0241cc"
         app:civ_border_width="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewName"
@@ -21,8 +21,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageViewProfileImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:baselineAligned="true"
         android:scaleType="centerCrop"
@@ -36,9 +36,11 @@
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="UserName"
-        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewProfileImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lines="1"
+        android:textColor="#5e5e5e"
         android:textSize="12sp"
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/textViewTime"
@@ -59,9 +62,9 @@
         android:id="@+id/textViewTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        android:textColor="#5e5e5e"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textViewName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ChatActivity"></activity>
+        <activity android:name=".Activity.ChatActivity"
+            android:theme="@style/ChatTheme"/>
         <activity android:name=".Activity.TabbedActivity" />
         <activity android:name=".Activity.AuthenticationActivity" />
         <activity

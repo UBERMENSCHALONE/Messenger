@@ -3,7 +3,6 @@ package com.ubermenschalone.messenger.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,7 +13,6 @@ import com.ubermenschalone.messenger.R;
 
 public class AuthenticationActivity extends AppCompatActivity implements View.OnClickListener, SwitchFragment {
 
-    TextView textViewTitle;
     ImageView imageViewBack;
 
     Fragment fragmentBack;
@@ -23,9 +21,8 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_authentication);
 
-        textViewTitle = findViewById(R.id.textViewTitle);
         imageViewBack = findViewById(R.id.imageViewBack);
         imageViewBack.setOnClickListener(this);
         setFragment(new LoginFragment(), "Login");
@@ -42,7 +39,6 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
 
     @Override
     public void setFragment(Fragment fragment, String fragmentTitle) {
-        textViewTitle.setText(fragmentTitle);
         switchTo(fragment);
 
         if (fragmentTitle.equals("Login")) {
