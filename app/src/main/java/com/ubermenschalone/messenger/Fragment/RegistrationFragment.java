@@ -253,6 +253,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
                 Glide.with(getContext()).load(bitmap).override(512, 512).into(imageViewProfileImage);
+                imageViewProfileImage.setVisibility(View.VISIBLE);
             } catch (IOException e) {
                 e.printStackTrace();
             }

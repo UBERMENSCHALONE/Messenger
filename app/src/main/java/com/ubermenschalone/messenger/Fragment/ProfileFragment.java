@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,11 +55,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     SwitchFragment switchFragment;
 
     ImageView imageViewProfileImage;
+
     TextView textViewSetProfileImage;
-    TextView textViewUsername;
-    TextView textViewEmail;
-    TextView textViewName;
-    TextView textViewLastname;
+
+    EditText editTextUsername;
+    EditText editTextEmail;
+    EditText editTextName;
+    EditText editTextLastname;
+
     Button buttonLogout;
 
 
@@ -77,11 +81,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.fragment_profile, container,false);
 
         imageViewProfileImage = rootView.findViewById(R.id.imageViewProfileImage);
+
         textViewSetProfileImage = rootView.findViewById(R.id.textViewSetProfileImage);
-        textViewUsername = rootView.findViewById(R.id.textViewUsername);
-        textViewEmail = rootView.findViewById(R.id.textViewEmail);
-        textViewName = rootView.findViewById(R.id.textViewName);
-        textViewLastname = rootView.findViewById(R.id.textViewLastname);
+
+        editTextUsername = rootView.findViewById(R.id.editTextUsername);
+        editTextEmail = rootView.findViewById(R.id.editTextEmail);
+        editTextName = rootView.findViewById(R.id.editTextName);
+        editTextLastname = rootView.findViewById(R.id.editTextLastname);
+
         buttonLogout = rootView.findViewById(R.id.buttonLogout);
 
         textViewSetProfileImage.setOnClickListener(this);
@@ -105,10 +112,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User value = dataSnapshot.getValue(User.class);
                 Glide.with(getContext()).load(value.userProfileImageURL).override(512, 512).into(imageViewProfileImage);
-                textViewUsername.setText(value.userUsername);
-                textViewEmail.setText(value.userEmail);
-                textViewName.setText(value.userName);
-                textViewLastname.setText(value.userLastname);
+                editTextUsername.setText(value.userUsername);
+                editTextEmail.setText(value.userEmail);
+                editTextName.setText(value.userName);
+                editTextLastname.setText(value.userLastname);
             }
 
             @Override

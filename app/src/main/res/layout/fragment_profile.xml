@@ -24,9 +24,9 @@
             android:layout_gravity="center"
             android:baselineAligned="true"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp" />
+            android:src="@color/colorWhite"
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="1dp" />
 
         <TextView
             android:id="@+id/textViewSetProfileImage"
@@ -34,49 +34,115 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
             android:padding="4dp"
             android:text="Set profile image"
             android:textAlignment="center"
-            android:textColor="@color/colorAccent" />
+            android:textColor="#00bf8a" />
 
-        <TextView
-            android:id="@+id/textViewUsername"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:textColorHint="#00bf8a"
+            app:counterEnabled="false"
+            app:hintEnabled="true">
 
-        <TextView
-            android:id="@+id/textViewEmail"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/system_style_edit_profile"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Username"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="#5b5b5b"
+                android:textColorHint="#00bf8a" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:textColorHint="#00bf8a"
+            app:counterEnabled="false"
+            app:hintEnabled="true">
 
-        <TextView
-            android:id="@+id/textViewName"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/system_style_edit_profile"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Email"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="#5b5b5b"
+                android:textColorHint="#00bf8a" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:textColorHint="#00bf8a"
+            app:counterEnabled="false"
+            app:hintEnabled="true">
 
-        <TextView
-            android:id="@+id/textViewLastname"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextLastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/system_style_edit_profile"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Lastname"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="#5b5b5b"
+                android:textColorHint="#00bf8a" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:textColorHint="#00bf8a"
+            app:counterEnabled="false"
+            app:hintEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/system_style_edit_profile"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Name"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="#5b5b5b"
+                android:textColorHint="#00bf8a" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout" />
+            android:background="@drawable/system_style_button"
+            android:text="Logout"
+            android:textColor="@color/colorWhite" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
