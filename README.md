@@ -4,6 +4,7 @@
 <h1>Auntification activity</h1><br>
 <font size="5">Auntification activity</font>
 <font size="1">Auntification activity</font>
+<font size="6">This is some text!</font>
 <font size="6">Auntification activity</font>
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/login.jpg" alt="drawing" width="300"/>
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/registration.jpg" alt="drawing" width="300"/>
