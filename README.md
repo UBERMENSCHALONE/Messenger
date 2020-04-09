@@ -1,6 +1,5 @@
-# Simple Messenger
+## Simple Messenger
 
-![alt-текст](https://github.com/UBERMENSCHALONE/Resources/blob/master/Projects/Messenger/Authentication.png "Design Authentication")
-
-![alt-текст](https://github.com/UBERMENSCHALONE/Resources/blob/master/Projects/Messenger/Chat.png "Design Chat")
-
+<p align="center">
+<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/chat.jpg" alt="drawing" width="250"/><br>
+</p>
