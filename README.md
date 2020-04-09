@@ -20,7 +20,7 @@
 </p><br>
 
 
-<h1 align="center">Design was taken from Dribbble</h1><br>
+<h1 align="center">Design was taken from Dribbble</h1>
 <p align="center">
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Authentication.png" alt="drawing"/><br>
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Chat.png" alt="drawing"/>
