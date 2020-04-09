@@ -2,7 +2,9 @@
 
 <p align="center">
 <h1>Auntification activity</h1><br>
-<h6>Auntification activity</h6><br>
+<font size="5">Auntification activity</font>
+<font size="1">Auntification activity</font>
+<font size="6">Auntification activity</font>
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/login.jpg" alt="drawing" width="300"/>
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/registration.jpg" alt="drawing" width="300"/>
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/forgot password.jpg" alt="drawing" width="300"/>
