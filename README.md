@@ -22,6 +22,6 @@
 
 <h1 align="center">Design was taken from Dribbble</h1><br>
 <p align="center">
-<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Сhat.jpg" alt="drawing"/><br>
-<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Authentication.jpg" alt="drawing"/>
+<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Authentication.png" alt="drawing"/><br>
+<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Chat.png" alt="drawing"/>
 </p>
