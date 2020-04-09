@@ -17,4 +17,11 @@
 <h1 align="center">Chat</h1><br>
 <p align="center">
 <img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/chat.jpg" alt="drawing" width="400"/>
+</p><br>
+
+
+<h1 align="center">Design was taken from Dribbble</h1><br>
+<p align="center">
+<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Сhat.jpg" alt="drawing"/><br>
+<img src="https://github.com/UBERMENSCHALONE/Resources/blob/master/Messenger/Authentication.jpg" alt="drawing"/>
 </p>
